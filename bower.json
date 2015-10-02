@@ -1,0 +1,13 @@
+{
+  "name": "image zoom gallery widget",
+  "description": "amazon style image gallery with image zooming on hover",
+  "version": "0.1",
+  "homepage": "",
+  "license": "",
+  "private": true,
+  "dependencies": {
+    "jquery": "2.1.4",
+    "bootstrap": "3.3.5"
+  }
+}
+
