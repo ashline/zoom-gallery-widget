@@ -4,11 +4,20 @@ html, div {
 div{
     display: inline-block;
 }
+#source-container {
+    position: relative;
+}
 #source {
     img {
         width: 200px;
         height: auto;
     }
+}
+#square {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.5);
 }
 #preview {
     background-image: url(assets/mushroom1.jpg);
