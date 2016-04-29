@@ -18,13 +18,16 @@ div{
     width: 50px;
     height: 50px;
     background: rgba(255,255,255,0.5);
+    display: none;
 }
 #preview {
     background-image: url(assets/mushroom1.jpg);
-    background-size: 1000px;
+    background-size: 1600px 1000px;
     background-position: 0 0;
     width: 400px;
     height: 400px;
     border: 1px solid pink;
-    
+    position: absolute;
+    display: none;
+    left: 300px;
 }

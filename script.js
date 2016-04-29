@@ -1,32 +1,58 @@
 $(document).ready(function() {
     var $preview  = $('#preview');
-    var scaleFactor = 5;
+    var scaleFactor = 8;
     var imageHeight = $('#source').height();
-console.log(imageHeight);
-    var scaleFactorY = 5 - (400 / imageHeight);
-    var scaleFactorX = 3;
     var $square = $('#square');
     var $sourceContainer =  $('#source-container');
     var containerOffset = $sourceContainer.offset();
     
-    function moveSquare(top, left) {
+    function moveSquare(position) {
         var width = $square.width();
-
-        $square.css({top:top,
-                          left: left});
+    
+        $square.css({top: position.top,
+                          left: position.left});
     }
+    
+    function calculateSquarePosition(top, left) {
+        var position = {top: top, left: left};
+        
+        if(left < 0) {
+            position.left = 0;
+        }
+        
+        if(left > $sourceContainer.width() - $square.width()) {
+            position.left = $sourceContainer.width() - $square.width();
+        }
+        
+        if(top < 0) {
+            position.top = 0;
+        }
+        
+        if(top > $sourceContainer.height() - $square.height()) {
+            position.top = $sourceContainer.height() - $square.height();
+        }
+        
+        return position;
+    }
+    
     $sourceContainer.on('mousemove', function(e) {
         var offsetY = e.pageY - containerOffset.top;
         var offsetX = e.pageX - containerOffset.left;
-        var scaledOffsetX = scaleFactorX * offsetX;
-        var scaledOffsetY = scaleFactorY * offsetY;
-        
-        moveSquare(offsetY - $square.height()/2, offsetX - $square.width()/2);
+        var position = calculateSquarePosition(offsetY - $square.height()/2, offsetX - $square.width()/2);
+        moveSquare(position);
         $preview.css('background-position', '-' + 
-                     scaledOffsetX + 'px -' + scaledOffsetY +
+                     position.left * scaleFactor + 'px -' + position.top * scaleFactor +
                      'px');
-//        console.log(scaledOffsetX, scaledOffsetY)
     });
-    $square.on('mousemove', function() {
+    
+    $sourceContainer.on('mouseleave',function() {
+       $square.fadeOut(300);
+       $preview.fadeOut(300); 
     });
+    
+    $sourceContainer.on('mouseenter',function() {
+       $square.fadeIn(300); 
+       $preview.fadeIn(300); 
+    });
+
 });
