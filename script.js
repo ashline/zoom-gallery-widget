@@ -1,9 +1,12 @@
 $(document).ready(function() {
     var $preview  = $('#preview');
     var scaleFactor = 8;
-    var imageHeight = $('#source').height();
+    var $source = $('#source');
+    var imageHeight = $source.height();
     var $square = $('#square');
+    var $gallery = $('ul');
     var $sourceContainer =  $('#source-container');
+    var $sourceImg = $source.find('img');
     var containerOffset = $sourceContainer.offset();
     
     function moveSquare(position) {
@@ -53,6 +56,26 @@ $(document).ready(function() {
     $sourceContainer.on('mouseenter',function() {
        $square.fadeIn(300); 
        $preview.fadeIn(300); 
+    });
+    
+    function setSourceImage(url){
+        $sourceImg.attr('src', url);
+    }
+    
+    function setPreviewImage(url) {
+       var css = {
+           'background-image': 'url('+url+')',
+           'background-size': '1600px ' + ($source.height() * scaleFactor) + 'px'
+       };
+       console.log(css)
+        $preview.css(css);
+    }
+    
+    $gallery.on('click', 'li', function(e) {
+        var $target = $(e.target);
+        var url = $target.attr('src');
+        setSourceImage(url);
+        setPreviewImage(url)
     });
 
 });

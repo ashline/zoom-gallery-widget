@@ -3,7 +3,7 @@ html, div {
 
 div {
   display: inline-block; }
-
+  
 #source-container {
   position: relative; }
 
@@ -28,5 +28,24 @@ div {
   position: absolute;
   left: 300px;
   border: 1px solid pink; }
+  
+  ul {
+    margin-top: 50px;
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border: 1px solid black;
+  }
+  li img {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
 /*# sourceMappingURL=app.css.map */

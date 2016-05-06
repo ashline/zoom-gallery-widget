@@ -31,3 +31,21 @@ div{
     display: none;
     left: 300px;
 }
+  ul {
+    margin-top: 50px;
+    list-style: none;
+    li {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        border: 1px solid black;
+        img {
+            width: 100%;
+            height: auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+  }
